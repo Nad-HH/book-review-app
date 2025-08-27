@@ -18,10 +18,11 @@ Aplicación fullstack para reseñas de libros que permite a los usuarios registr
 - **Frontend:** Next.js 15, React 18, TypeScript 5  
 - **Estilos:** Tailwind CSS 3  
 - **Backend:** API Routes de Next.js 15 (TypeScript)  
-- **Base de datos:** PostgreSQL 15+  
-- **Autenticación:** JWT, NextAuth.js  
+- **Base de datos:** PostgreSQL 15+, Prisma ORM  
+- **Autenticación:** NextAuth.js (con JWT)  
 - **Despliegue:** Railway  
-- **Control de versiones:** GitHub
+- **Control de versiones:** GitHub  
+
 
 ---
 
