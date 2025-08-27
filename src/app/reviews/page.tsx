@@ -99,7 +99,7 @@ export default function ReviewPage() {
             <div className="space-y-2">
               <Link href="/add-review" passHref>
                 <button className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-green-500 text-white hover:bg-green-600 h-10 px-4 py-2 w-full">
-                  Crear review
+                  Crear reseña
                 </button>
               </Link>
               <button
@@ -121,7 +121,7 @@ export default function ReviewPage() {
 
             {reviews.length === 0 ? (
                 <p className="text-center text-gray-100">
-                Haz clic en <span className="font-semibold text-teal-400">Ver todas las reseñas</span> para cargar las reseñas.
+                Haz clic en <span className="font-semibold text-teal-400">Ver todas las reseñas</span> para cargar las reseñas. Si no hay reseñas aún. <Link href="/add-review" className="font-semibold text-green-400 underline">Crea tu primera reseña</Link>.
                 </p>
             ) : (
               <div
