@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📚 Sistema de Reseñas de Libros
 
-## Getting Started
+Aplicación fullstack para reseñas de libros que permite a los usuarios registrarse, iniciar sesión, crear, ver y eliminar reseñas.
 
-First, run the development server:
+## 📑 Tabla de Contenidos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Tecnologías](#tecnologías)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Puntos finales de la API](#puntos-finales-de-la-api)
+- [Páginas y rutas](#páginas-y-rutas)
+- [Errores conocidos](#errores-conocidos)
+
+---
+
+## 🛠️ Tecnologías
+- **Frontend:** Next.js 15, React 18, TypeScript 5  
+- **Estilos:** Tailwind CSS 3  
+- **Backend:** API Routes de Next.js 15 (TypeScript)  
+- **Base de datos:** PostgreSQL 15+  
+- **Autenticación:** JWT, NextAuth.js  
+- **Despliegue:** Railway  
+- **Control de versiones:** GitHub
+
+---
+
+## 🚀 Instalación
+
+Sigue estos pasos para correr el proyecto localmente:
+
+1. **Clona el repositorio:**
+    ```bash
+    git clone https://github.com/Nad-HH/book-review-app.git
+    cd book-review-app
+    ```
+
+2. **Instala las dependencias:**
+    ```bash
+    npm install
+    2. **Instala las dependencias:**
+        ```bash
+        npm install
+        ```
+
+    3. **Copia las variables de entorno:**
+        ```bash
+        cp .env.example .env
+        ```
+
+    4. **Configura la base de datos en PostgreSQL:**
+
+    - Crea la base de datos y el usuario:
+      ```sql
+      CREATE DATABASE app_review_libros;
+      CREATE ROLE user_app_review_libros WITH LOGIN PASSWORD '123456';
+      GRANT CONNECT ON DATABASE app_review_libros TO user_app_review_libros;
+      GRANT USAGE, ALL ON SCHEMA public TO user_app_review_libros;
+      GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user_app_review_libros;
+      GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO user_app_review_libros;
+      GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO user_app_review_libros;
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO user_app_review_libros;
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON FUNCTIONS TO user_app_review_libros;
+      ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO user_app_review_libros;
+      ALTER ROLE user_app_review_libros CREATEDB;
+      ```
+
+4. **Inicializa Prisma y ejecuta migraciones:**
+Antes de iniciar Prisma, configura la variable de conexión en el archivo `.env` con los datos de tu usuario y base de datos de PostgreSQL. Por ejemplo:
+
+```env
+DATABASE_URL="postgresql://tu_usuario:tu_contraseña@localhost:5432/tu_base_de_datos"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Asegúrate de reemplazar `tu_usuario`, `tu_contraseña` y `tu_base_de_datos` por los valores correspondientes a tu configuración local en la variable `DATABASE_URL`.  
+Luego, ejecuta los siguientes comandos para inicializar Prisma y aplicar la migración inicial:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+ ```bash
+    npx prisma init
+    npx prisma migrate dev --name init
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧑‍💻 Uso
 
-To learn more about Next.js, take a look at the following resources:
+1. Inicia el servidor de desarrollo:
+    ```bash
+    npm run dev
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. Accede a la aplicación en `http://localhost:3000`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔌 Puntos finales de la API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `POST /api/signup` — Registrar un nuevo usuario
+- `GET /api/reviews` — Obtener todas las reseñas (requiere autorización)
+- `POST /api/reviews` — Añadir una nueva reseña (requiere autorización)
+- `DELETE /api/reviews/:id` — Eliminar una reseña (solo propietario autorizado)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🧭 Páginas y rutas
+
+- `/signup` — Registro de usuario
+- `/login` — Inicio de sesión
+- `/reviews` — Ver todas las reseñas
+- `/add-review` — Crear una nueva reseña
+
+---
+
+## ⚠️ Errores conocidos
+
+- **NextAuth:** Asegúrate de que la estructura de archivos de autenticación esté dentro de la carpeta `auth` para evitar errores.
+- **Middleware:** Configura correctamente el middleware según las páginas protegidas y verifica los nombres de las rutas.
+- **Prisma:** Si cambias el esquema, ejecuta nuevamente las migraciones.
+
+---
+
+## ⏱️ Tiempo estimado de inversión
+
+Aproximadamente 8-12 horas, dependiendo de la experiencia previa con las tecnologías mencionadas.
+
+
