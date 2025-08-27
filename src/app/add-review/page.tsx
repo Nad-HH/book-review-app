@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation";
 
 interface FormData {
   user: number;
@@ -70,56 +70,59 @@ export default function AddReviewPage() {
     return Object.keys(newErrors).length === 0;
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  if (!validaForm()) return;
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validaForm()) return;
 
-  setLoading(true);
-  setErrors({});
-  setSuccess("");
+    setLoading(true);
+    setErrors({});
+    setSuccess("");
 
-  try {
-    const response = await fetch("/api/reviews", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${session?.accessToken}`,
-      },
-      body: JSON.stringify({
-        user: session?.user.id,
-        book_title: formData.book_title,
-        rating: formData.rating,
-        review: formData.review,
-        mood: formData.mood,
-      }),
-    });
+    try {
+      const response = await fetch("/api/reviews", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${session?.accessToken}`,
+        },
+        body: JSON.stringify({
+          user: session?.user.id,
+          book_title: formData.book_title,
+          rating: formData.rating,
+          review: formData.review,
+          mood: formData.mood,
+        }),
+      });
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (!response.ok) {
-      setErrors({ general: data.error || "Error al crear la reseña." });
-      return;
+      if (!response.ok) {
+        setErrors({ general: data.error || "Error al crear la reseña." });
+        return;
+      }
+      setSuccess("Reseña creada exitosamente");
+
+      router.push("/reviews");
+    } catch (error) {
+      console.error("Error en la solicitud:", error);
+      setErrors({
+        general: "Error al crear la reseña. Intente de nuevo.",
+      });
+    } finally {
+      setLoading(false);
     }
-    setSuccess("Reseña creada exitosamente");
+  };
 
-    router.push("/reviews"); 
-  } catch (error) {
-    console.error("Error en la solicitud:", error);
-    setErrors({
-      general: "Error al crear la reseña. Intente de nuevo.",
-    });
-  } finally {
-    setLoading(false);
-  }
-};
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="max-w-md w-full space-y-8">
@@ -210,25 +213,34 @@ export default function AddReviewPage() {
             </div>
 
             <div>
-              <label htmlFor="mood" className="sr-only">
+              <label
+                htmlFor="mood"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Estado de ánimo
               </label>
-              <input
+              <select
                 id="mood"
                 name="mood"
-                type="text"
                 required
                 value={formData.mood}
                 onChange={handleInputChange}
-                className={`relative block w-full px-3 py-2 border ${
+                className={`mt-1 block w-full px-3 py-2 border ${
                   errors.mood ? "border-red-300" : "border-gray-300"
-                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm`}
-                placeholder="Reseña del libro"
-              ></input>
+                } rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm`}
+              >
+                <option value="">Selecciona tu estado de ánimo</option>
+                <option value="feliz">😄 Feliz</option>
+                <option value="triste">😢 Triste</option>
+                <option value="emocionado">🤩 Emocionado</option>
+                <option value="cansado">😴 Cansado</option>
+                <option value="enojado">😡 Enojado</option>
+              </select>
               {errors.mood && (
                 <p className="mt-1 text-sm text-red-600">{errors.mood}</p>
               )}
             </div>
+
             <button
               className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-700 h-10 px-4 py-2 w-full"
               type="submit"
