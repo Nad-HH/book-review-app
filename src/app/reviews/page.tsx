@@ -81,7 +81,7 @@ export default function ReviewPage() {
     <div className="space-y-6">
       <div className="bg-black shadow rounded-lg p-6">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-2">
-          <div className="bg-gradient-to-r from-zinc-500 to-zinc-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r bg-gray-50 shadow-lg text-black p-6 rounded-lg">
             <h3 className="text-lg font-semibold mb-2">Mi Perfil</h3>
             <div className="space-y-2">
               <p>
@@ -94,20 +94,20 @@ export default function ReviewPage() {
               </p>
             </div>
           </div>
-          <div className="bg-gradient-to-r from-zinc-500 to-zinc-600 text-white p-6 rounded-lg">
+          <div className="bg-gradient-to-r bg-gray-50  shadow-lg text-black p-6 rounded-lg">
             <h3 className="text-lg font-semibold mb-2">Acciones</h3>
             <div className="space-y-2">
               <Link href="/add-review" passHref>
-                <button className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-yellow-500 text-white hover:bg-yellow-600 h-10 px-4 py-2 w-full">
+                <button className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-green-500 text-white hover:bg-green-600 h-10 px-4 py-2 w-full">
                   Crear review
                 </button>
               </Link>
               <button
                 onClick={fetchReviews}
                 disabled={loading}
-                className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-red-400 text-white hover:bg-orange-600 h-10 px-4 py-2 w-full mt-3"
+                className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-teal-500 text-white hover:bg-teal-600 h-10 px-4 py-2 w-full mt-3"
               >
-                {loading ? "Cargando..." : "Cargar reseñas"}
+                {loading ? "Cargando..." : "Ver todas las reseñas"}
               </button>
             </div>
           </div>
@@ -120,9 +120,9 @@ export default function ReviewPage() {
             </h1>
 
             {reviews.length === 0 ? (
-              <p className="text-center text-gray-600">
-                No hay reseñas disponibles.
-              </p>
+                <p className="text-center text-gray-100">
+                Haz clic en <span className="font-semibold text-teal-400">Ver todas las reseñas</span> para cargar las reseñas.
+                </p>
             ) : (
               <div
                 className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"

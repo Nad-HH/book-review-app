@@ -124,8 +124,8 @@ export default function AddReviewPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-300">
+      <div className="max-w-md w-full space-y-8  bg-gray-50 p-10 rounded-md shadow-lg">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Crear nueva Reseña
@@ -157,7 +157,7 @@ export default function AddReviewPage() {
                 onChange={handleInputChange}
                 className={`relative block w-full px-3 py-2 border ${
                   errors.book_title ? "border-red-300" : "border-gray-300"
-                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm`}
+                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm`}
                 placeholder="Título del libro"
               ></input>
               {errors.book_title && (
@@ -184,7 +184,7 @@ export default function AddReviewPage() {
                 onChange={handleInputChange}
                 className={`mt-1 block w-full px-3 py-2 border ${
                   errors.rating ? "border-red-300" : "border-gray-300"
-                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm`}
+                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm`}
               />
               {errors.rating && (
                 <p className="mt-1 text-sm text-red-600">{errors.rating}</p>
@@ -204,7 +204,7 @@ export default function AddReviewPage() {
                 onChange={handleInputChange}
                 className={`relative block w-full px-3 py-2 border ${
                   errors.review ? "border-red-300" : "border-gray-300"
-                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm`}
+                } placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm`}
                 placeholder="Reseña del libro"
               ></input>
               {errors.review && (
@@ -227,7 +227,7 @@ export default function AddReviewPage() {
                 onChange={handleInputChange}
                 className={`mt-1 block w-full px-3 py-2 border ${
                   errors.mood ? "border-red-300" : "border-gray-300"
-                } rounded-md focus:outline-none focus:ring-orange-500 focus:border-orange-500 sm:text-sm`}
+                } rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm`}
               >
                 <option value="">Selecciona tu estado de ánimo</option>
                 <option value="feliz">😄 Feliz</option>
@@ -242,7 +242,7 @@ export default function AddReviewPage() {
             </div>
 
             <button
-              className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-700 h-10 px-4 py-2 w-full"
+              className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-green-600 text-white hover:bg-green-700 h-10 px-4 py-2 w-full"
               type="submit"
               disabled={loading}
             >

@@ -39,15 +39,16 @@ export default function LoginPageComponent() {
     }
   };
 
+ 
   return (
-    <div className="p-10 flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8">
+    <div className="p-10 flex items-center justify-center bg-gray-300">
+      <div className="max-w-md w-full space-y-8  bg-gray-50 p-10 rounded-md shadow-lg">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Iniciar sesión
           </h2>
           <p className="mt-2 text-center text-sm text-gray-600">
-            O{" "}
+            {" "}
             <Link
               href={"/signup"}
               className="font-medium text-orange-600 hover:text-orange-500"

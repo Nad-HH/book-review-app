@@ -82,8 +82,8 @@ export default function SingUpPage() {
     }
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-300">
+      <div className="max-w-md w-full space-y-8  bg-gray-50 p-10 rounded-md shadow-lg">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
             Crear nueva cuenta
