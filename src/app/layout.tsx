@@ -24,6 +24,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  console.log("Rendering Home Page");
+  console.log("NEXTAUTH_URL", process.env.NEXTAUTH_URL);
+  console.log("NEXTAUTH_SECRET", process.env.NEXTAUTH_SECRET);
   return (
     <html lang="en">
       <body
