@@ -65,9 +65,8 @@ export default function SingUpPage() {
         return;
       }
       setSuccess("Cuenta creada exitosamente. Ahora puedes iniciar sesión.");
-
     } catch (error) {
-        console.error("Error en la solicitud:", error);
+      console.error("Error en la solicitud:", error);
       setErrors({
         general: "Error al crear la cuenta. Por favor, intente de nuevo.",
       });
@@ -93,7 +92,7 @@ export default function SingUpPage() {
             O{" "}
             <Link
               href={"/login"}
-              className="font-medium text-orange-500 hover:text-orange-300s"
+              className="font-medium text-orange-600 hover:text-orange-500"
             >
               iniciar sesión si ya tienes cuenta
             </Link>
