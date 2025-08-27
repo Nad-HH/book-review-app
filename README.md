@@ -2,19 +2,9 @@
 
 Aplicación fullstack para reseñas de libros que permite a los usuarios registrarse, iniciar sesión, crear, ver y eliminar reseñas.
 
-## 📑 Tabla de Contenidos
-
-- [Tecnologías](#tecnologías)
-- [Instalación](#instalación)
-- [Uso](#uso)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Puntos finales de la API](#puntos-finales-de-la-api)
-- [Páginas y rutas](#páginas-y-rutas)
-- [Errores conocidos](#errores-conocidos)
-
 ---
 
-## 🛠️ Tecnologías
+## 🛠️Tecnologías
 - **Frontend:** Next.js 15, React 18, TypeScript 5  
 - **Estilos:** Tailwind CSS 3  
 - **Backend:** API Routes de Next.js 15 (TypeScript)  
@@ -51,7 +41,7 @@ Sigue estos pasos para correr el proyecto localmente:
 
     4. **Configura la base de datos en PostgreSQL:**
 
-    - Crea la base de datos y el usuario:
+    - Crea la base de datos y el usuario. Si decides crear un usuario específico, asegúrate de asignarle los siguientes permisos:
       ```sql
       CREATE DATABASE app_review_libros;
       CREATE ROLE user_app_review_libros WITH LOGIN PASSWORD '123456';
@@ -83,15 +73,21 @@ Luego, ejecuta los siguientes comandos para inicializar Prisma y aplicar la migr
 
 ---
 
-## 🧑‍💻 Uso
+## 🧑‍💻 Despliegue Local
 
 1. Inicia el servidor de desarrollo:
     ```bash
     npm run dev
     ```
 
-2. Accede a la aplicación en `http://localhost:3000`.
+2. Accede a la aplicación en [http://localhost:3000](http://localhost:3000).
 
+## 🌐 Despliegue en Producción
+
+La aplicación está desplegada en Railway:  
+[https://book-review-app-production-cdbe.up.railway.app/](https://book-review-app-production-cdbe.up.railway.app/)
+
+Para el despliegue en producción se configuró la base de datos y las variables de entorno necesarias en Railway.
 ---
 
 ## 🔌 Puntos finales de la API
