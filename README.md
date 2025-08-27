@@ -18,6 +18,8 @@ Aplicación fullstack para reseñas de libros que permite a los usuarios registr
 
 ## Tecnologías
 
+- **Node.js:** v22
+- **npm:** v10.9.2
 - **Frontend:** Next.js 15, React 19, TypeScript 5  
 - **Estilos:** Tailwind CSS 4  
 - **Backend:** API Routes de Next.js 15 (TypeScript)  
@@ -80,6 +82,14 @@ npm run dev
 La aplicación está desplegada en Railway:  
 [https://book-review-app-production-cdbe.up.railway.app/](https://book-review-app-production-cdbe.up.railway.app/)
 
+Para probar la aplicación, puedes crear una cuenta nueva o utilizar alguno de los siguientes usuarios de prueba:
+
+- **Usuario:** lucas.perez@example.com  
+    **Contraseña:** 123456
+
+- **Usuario:** maria.gomez@example.com  
+    **Contraseña:** 123456
+
 ### Pasos para desplegar en producción:
 
 1. Inicia sesión en tu cuenta de Railway y selecciona el proyecto a desplegar desde GitHub.
@@ -97,18 +107,19 @@ La aplicación está desplegada en Railway:
 - `POST /api/reviews` — Añadir una nueva reseña (solo usuarios autenticados).
 - `DELETE /api/reviews/:id` — Eliminar una reseña (solo el propietario autenticado).
 
-> **Nota sobre la autenticación**
->
-> El inicio de sesión no se expone como un endpoint REST tradicional (`/api/login`), ya que la autenticación es gestionada automáticamente por NextAuth.js.
->
-> NextAuth configura y expone las siguientes rutas para la autenticación:
->
-> - `POST /api/auth/callback/credentials` — Validación de credenciales.
-> - `GET /api/auth/session` — Consultar la sesión activa.
-> - `POST /api/auth/signin` — Iniciar sesión.
-> - `POST /api/auth/signout` — Cerrar sesión.
->
-> La lógica de validación de credenciales (email y contraseña usando Prisma y bcrypt) se define en la configuración de NextAuth (`lib/auth.ts`). No es necesario implementar manualmente un endpoint `/api/login`, ya que NextAuth gestiona todo el flujo de autenticación.
+    > **Nota sobre la autenticación**
+    >
+    > El inicio de sesión no funciona como un endpoint REST tradicional (por ejemplo, `/api/login`) porque la autenticación se maneja automáticamente con NextAuth.js.
+    >
+    > NextAuth expone varias rutas listas para usar:
+    >
+    > - `POST /api/auth/callback/credentials` — Para validar las credenciales del usuario.
+    > - `GET /api/auth/session` — Para consultar la sesión activa.
+    > - `POST /api/auth/signin` — Para iniciar sesión.
+    > - `POST /api/auth/signout` — Para cerrar sesión.
+    >
+    > La validación de usuario (email y contraseña) se realiza con Prisma y bcrypt y está definida en el archivo `lib/auth.ts`.
+    > No es necesario crear un endpoint `/api/login`, porque NextAuth ya se encarga de todo el flujo de autenticación automáticamente.
 
 ---
 
@@ -159,4 +170,4 @@ Para mejorar la experiencia visual, cada reseña incluye un estado de ánimo que
 
 Aproximadamente 8-12 horas, dependiendo de la experiencia previa con las tecnologías mencionadas.
 
-
+---
