@@ -133,7 +133,7 @@ export default function ReviewPage() {
                   <p>{review.review}</p>
                   {session.user.id === review.user.id.toString() && (
                     <button
-                      className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-orange-600 text-white hover:bg-orange-700 h-10 px-4 py-2 w-full mt-3"
+                      className="inline-flex items-center justify-center rounded-md font-medium transition-colors disabled:opacity-50 bg-red-600 text-white hover:bg-red-700 h-10 px-4 py-2 w-full mt-3"
                       onClick={() => handleDelete(review.id)}
                     >
                       Eliminar
